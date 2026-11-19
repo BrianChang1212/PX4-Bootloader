@@ -72,6 +72,7 @@ TARGETS	= \
 	saampixv1_1_bl \
 	modalai_fc_v1_bl \
 	modalai_voxl2_io_bl \
+	godwitgff4_bl \
 	omnibusf4sd_bl \
 	pix32v5_bl \
 	px4aerocore_bl \
@@ -160,6 +161,9 @@ crazyflie_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 
 crazyflie21_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	${MAKE} ${MKFLAGS} -f  Makefile.f4 TARGET_HW=CRAZYFLIE21 LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
+
+godwitgff4_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
+	${MAKE} ${MKFLAGS} -f  Makefile.f4 TARGET_HW=GODWITGFF4 LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@
 
 omnibusf4sd_bl: $(MAKEFILE_LIST) $(LIBOPENCM3)
 	${MAKE} ${MKFLAGS} -f  Makefile.f4 TARGET_HW=OMNIBUSF4SD LINKER_FILE=stm32f4.ld TARGET_FILE_NAME=$@

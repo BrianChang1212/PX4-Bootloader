@@ -818,6 +818,43 @@
 # define USBMFGSTRING                   "Bitcraze AB"
 
 /****************************************************************************
+ * TARGET_HW_GODWITGFF4
+ ****************************************************************************/
+
+#elif  defined(TARGET_HW_GODWITGFF4)
+
+# define APP_LOAD_ADDRESS               0x08008000
+# define BOOTLOADER_DELAY               5000
+# define INTERFACE_USB                  1
+# define INTERFACE_USART                0
+# define USBDEVICESTRING                "PX4 BL Accton Godwit GFF4"
+# define USBVENDORID                    0x083A
+# define USBPRODUCTID                   0x1BD1
+# define USBMFGSTRING                   "Accton"
+
+# define BOARD_TYPE                     7121
+# define BOARD_FLASH_SECTORS            11
+# define BOARD_FLASH_SIZE               (1024 * 1024)
+/* Sector 1 (16 KiB at 0x08004000) holds FLASH_BASED_PARAMS and must survive
+ * a firmware upgrade, so erasing starts at the sector after it.
+ */
+# define BOARD_FIRST_FLASH_SECTOR_TO_ERASE    1
+# define APP_RESERVATION_SIZE           (1 * 16 * 1024) /* 1 16 KiB sector */
+
+# define OSC_FREQ                       8
+
+/* LEDs are active low: blue on PB3, green on PB14 */
+# define BOARD_PIN_LED_ACTIVITY         GPIO3
+# define BOARD_PIN_LED_BOOTLOADER       GPIO14
+# define BOARD_PORT_LEDS                GPIOB
+# define BOARD_CLOCK_LEDS               RCC_AHB1ENR_IOPBEN
+# define BOARD_LED_ON                   gpio_clear
+# define BOARD_LED_OFF                  gpio_set
+
+/* No dedicated VBUS sense pin on this board */
+# define BOARD_USB_VBUS_SENSE_DISABLED
+
+/****************************************************************************
  * TARGET_HW_OMNIBUS_NXT
  ****************************************************************************/
 
