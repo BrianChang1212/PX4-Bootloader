@@ -823,7 +823,7 @@
 
 #elif  defined(TARGET_HW_GODWITGFF4)
 
-# define APP_LOAD_ADDRESS               0x08008000
+# define APP_LOAD_ADDRESS               0x0800C000
 # define BOOTLOADER_DELAY               5000
 # define INTERFACE_USB                  1
 # define INTERFACE_USART                0
@@ -835,11 +835,11 @@
 # define BOARD_TYPE                     7121
 # define BOARD_FLASH_SECTORS            11
 # define BOARD_FLASH_SIZE               (1024 * 1024)
-/* Sector 1 (16 KiB at 0x08004000) holds FLASH_BASED_PARAMS and must survive
- * a firmware upgrade, so erasing starts at the sector after it.
+/* Preserve ArduPilot parameter sectors 1 and 2. The erase-table index
+ * 2 is physical sector 3, at the 48 KiB application start.
  */
-# define BOARD_FIRST_FLASH_SECTOR_TO_ERASE    1
-# define APP_RESERVATION_SIZE           (1 * 16 * 1024) /* 1 16 KiB sector */
+# define BOARD_FIRST_FLASH_SECTOR_TO_ERASE    2
+# define APP_RESERVATION_SIZE           (2 * 16 * 1024) /* 2 parameter sectors */
 
 # define OSC_FREQ                       8
 
